@@ -41,7 +41,7 @@ sync: ## Install dependencies
 
 .PHONY: start
 start: ## Starts the server
-	react-scripts start
+	npm run start
 
 # Check, lint and format targets
 # ------------------------------
@@ -68,9 +68,13 @@ docker-build-prod: ## Build prod image
 docker-build-test: ## Build test image
 	docker build -t $(DOCKER_USERNAME)/$(PROJECT_NAME):test -t $(DOCKER_USERNAME)/$(PROJECT_NAME):$(PROJECT_VERSION)-test .
 
-docker-push: ## Push prod images
+docker-push-prod: ## Push prod images
 	docker push $(DOCKER_USERNAME)/$(PROJECT_NAME):latest
 	docker push $(DOCKER_USERNAME)/$(PROJECT_NAME):$(PROJECT_VERSION)
+
+docker-push-test: ## Push test images
+	docker push $(DOCKER_USERNAME)/$(PROJECT_NAME):test
+	docker push $(DOCKER_USERNAME)/$(PROJECT_NAME):$(PROJECT_VERSION)-test
 
 dc-up: ## Start prod docker-compose
 	docker-compose up -d --pull always
