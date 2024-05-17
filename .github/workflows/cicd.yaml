@@ -1,4 +1,4 @@
-name: "Build Pipeline"
+name: "Build/CD Pipeline"
 
 on:
   push:
@@ -63,4 +63,27 @@ jobs:
           no-cache: true
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.PROJECT_NAME }}:${{ env.PROJECT_VERSION }},${{ secrets.DOCKERHUB_USERNAME }}/${{ env.PROJECT_NAME }}:latest
+  
+  cd:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build-prod
+    name: "Continuous Deployment"
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract name and version from Makefile
+        run: |
+          echo "PROJECT_NAME=$(grep -oP '^PROJECT_NAME := \K.*' Makefile)" >> $GITHUB_ENV
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SERVER_SSH }}
+      - name: Check project folder
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "mkdir -p /warpoint/${{ env.PROJECT_NAME }}"
+      - name: Copy configs files
+        run: |
+          scp ./Makefile ./docker-compose.yaml ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/warpoint/${{ env.PROJECT_NAME }}
+      - name: Restart docker-compose
+        run: ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "cd /warpoint/${{ env.PROJECT_NAME }} && make dc-start-prod"
 
