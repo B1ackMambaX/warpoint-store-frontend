@@ -77,21 +77,21 @@ docker-push-test: ## Push test images
 	docker push $(DOCKER_USERNAME)/$(PROJECT_NAME):$(PROJECT_VERSION)-test
 
 dc-up: ## Start prod docker-compose
-	docker-compose up -d --pull always
+	docker compose up -d --pull always
 
 dc-down: ## Stop prod docker-compose
-	docker-compose down
+	docker compose down
 
 dc-start-prod: docker-setup-prod dc-down dc-up ## Start prod docker-compose
 
-dc-start-test:
-	docker-compose -f ./docker-compose.test.yaml down
+dc-start-test: ## Start test docker-compose
+	docker compose -f ./docker-compose.test.yaml down
 	make docker-setup-test
-	make docker-build-test # можно использовать docker-compose -f ./docker-compose.test.yaml pull
-	docker-compose -f ./docker-compose.test.yaml up -d
+	make docker-build-test # можно использовать docker-compose -f ./docker compose.test.yaml pull
+	docker compose -f ./docker-compose.test.yaml up -d
 
 dc-rm-test:
-	docker-compose -f ./docker-compose.test.yaml rm -s -v -f
+	docker compose -f ./docker-compose.test.yaml rm -s -v -f
 
 
 dc-ps: ## Ps docker-compose

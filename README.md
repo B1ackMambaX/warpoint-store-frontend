@@ -2,6 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### 🍽️ Настройка
+**Настройка обязательна, иначе не запустится CD.**
+Указать данные в `Github Secrets`:
+- `DOCKERHUB_USERNAME` - логин в `docker registry`
+- `DOCKERHUB_PASSWORD` - пароль в `docker registry`
+- `SERVER_SSH` - приватный ключ для подключения к `production` серверу
+- `SERVER_USER` - user для `production` сервера
+- `SERVER_HOST` - host для `production` сервера
+
 ## Available Scripts
 
 In the project directory, you can run:
