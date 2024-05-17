@@ -1,0 +1,11 @@
+networks:
+  warpoint-net:
+    external: true
+
+services:
+  warpoint-frontend:
+    image: begenfys/warpoint-store-frontend:latest
+    container_name: warpoint-frontend
+    networks:
+      - warpoint-net
+    restart: unless-stopped

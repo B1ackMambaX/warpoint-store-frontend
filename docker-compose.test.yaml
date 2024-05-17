@@ -1,0 +1,13 @@
+networks:
+  warpoint-test:
+    external: true
+
+services:
+  warpoint-frontend-test:
+    image: begenfys/warpoint-store-frontend:test
+    container_name: warpoint-frontend-test
+    ports:
+      - "0.0.0.0:80:80"
+    networks:
+      - warpoint-test
+    restart: unless-stopped
