@@ -1,4 +1,4 @@
-name: "CI/CD Pipeline"
+name: "Build Pipeline"
 
 on:
   push:
@@ -63,4 +63,4 @@ jobs:
           no-cache: true
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.PROJECT_NAME }}:${{ env.PROJECT_VERSION }},${{ secrets.DOCKERHUB_USERNAME }}/${{ env.PROJECT_NAME }}:latest
-  
+
