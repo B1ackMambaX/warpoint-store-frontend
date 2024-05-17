@@ -33,7 +33,7 @@ jobs:
       - name: Build and push test
         uses: docker/build-push-action@v3
         with:
-          platforms: linux/amd64,linux/arm64,linux/arm64/v8
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.PROJECT_NAME }}:${{ env.PROJECT_VERSION }}-test,${{ secrets.DOCKERHUB_USERNAME }}/${{ env.PROJECT_NAME }}:test
 
@@ -59,7 +59,7 @@ jobs:
       - name: Build and push production
         uses: docker/build-push-action@v3
         with:
-          platforms: linux/amd64,linux/arm64,linux/arm64/v8
+          platforms: linux/amd64,linux/arm64
           no-cache: true
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.PROJECT_NAME }}:${{ env.PROJECT_VERSION }},${{ secrets.DOCKERHUB_USERNAME }}/${{ env.PROJECT_NAME }}:latest
