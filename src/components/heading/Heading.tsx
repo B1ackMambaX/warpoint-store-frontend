@@ -2,9 +2,9 @@ import HeadingProps from "./HeadingProps"
 
 import './heading.scss';
 
-const Heading = ({children}: HeadingProps) => {
+const Heading = ({children, className}: HeadingProps) => {
     return (
-        <h2 className="heading bebas">{children}</h2>
+        <h2 className={`heading bebas ${className ? className : ''}`}>{children}</h2>
     )
 }
 

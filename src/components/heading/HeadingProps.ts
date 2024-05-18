@@ -1,5 +1,6 @@
 interface HeadingProps {
-    children: React.ReactNode
+    children: React.ReactNode;
+    className?: string;
 }
 
 export default HeadingProps;

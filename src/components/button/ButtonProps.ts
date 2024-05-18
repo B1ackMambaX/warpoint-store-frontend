@@ -5,6 +5,7 @@ type ButtonProps<T extends keyof JSX.IntrinsicElements> = {
     width: number;
     height: number;
     fontSize: number;
+    type?: 'submit'
 } & JSX.IntrinsicElements[T];
 
 export default ButtonProps;

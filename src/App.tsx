@@ -1,8 +1,8 @@
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 import CatalogPage from "./pages/mainPage/MainPage";
-import SignIn from './pages/signIn/SignIn';
-import SignUp from './pages/signUp/SignUp';
+import SignIn from './pages/auth/SignIn';
+import SignUp from './pages/auth/SignUp';
 
 const App = () => {
 	return (
