@@ -7,9 +7,33 @@ import Card from "../../components/card/Card";
 import Form from "../../components/form/Form";
 import Footer from "../../components/footer/Footer";
 
+import { useGetAllProductQuery } from '../../api/productSlice';
+
 
 
 const CatalogPage = () => {
+    const {data: products, isError, isLoading} = useGetAllProductQuery({offset: 0, limit: 3});
+
+    const renderSmallCatalog = () => {
+        if (isLoading) {
+            return <div>Загрузка...</div>
+        } else if (isError) {
+            return <div>Произошла ошибка, попробуйте позже</div>
+        } else {
+            return products.map((product: any) => {
+                return <Card
+                        key={product.id}
+                        id={product.id}
+                        imageUrl={product.img_url}
+                        name={product.name}
+                        description={product.description}
+                        price={product.price}
+                />
+            })
+        }
+    }
+
+
 	return <>
                 <Header/>
                 <div className="container">
@@ -28,27 +52,7 @@ const CatalogPage = () => {
                             КАТАЛОГ
                         </Heading>
                         <section className="main-page__catalog">
-                            <Card
-                                id={228}
-                                imageUrl={'Nikita Pidor'}
-                                name={'что-то там'}
-                                description="ОписаниеОписаниеОписание ОписаниеОписаниеОписание"
-                                price={500}
-                            />
-                            <Card
-                                id={228}
-                                imageUrl={'Nikita Pidor'}
-                                name={'что-то там'}
-                                description="ОписаниеОписаниеОписание ОписаниеОписаниеОписание"
-                                price={500}
-                            />
-                            <Card
-                                id={228}
-                                imageUrl={'Nikita Pidor'}
-                                name={'что-то там'}
-                                description="ОписаниеОписаниеОписание ОписаниеОписаниеОписание"
-                                price={500}
-                            />
+                            {renderSmallCatalog()}
                         </section>
 
                         <MainPageBanner heading="Что-то про игру надо написать и отправить регистрироваться" buttonText="Перейти к игре"/>
