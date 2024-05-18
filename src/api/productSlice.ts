@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import Product from '../models/Product';
 import Review from '../models/Review';
+import getAllProductParams from '../models/getAllProductParams';
 
 
 const productSlice = createApi({
@@ -8,8 +9,8 @@ const productSlice = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'http://5.42.105.101/api/product' }),
     tagTypes: ['Product', 'Review'],
     endpoints: builder => ({
-        getAllProduct: builder.query<Product[], void>({
-            query: () => '/',
+        getAllProduct: builder.query<any, getAllProductParams>({
+            query: ({offset, limit}) => `/?skip=${offset}&limit=${limit}`,
             providesTags: ['Product']
         }),
 
