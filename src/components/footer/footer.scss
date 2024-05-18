@@ -1,0 +1,33 @@
+.footer {
+    padding: 0 40px;
+    padding-bottom: 32px;
+    &__requisites {
+        display: block;
+    }
+
+    &__hr {
+        height: 3px;
+        background-color: #FBFBFB;
+        margin-bottom: 32px;
+    }
+
+    &__heading {
+        font-size: 34px;
+        margin-bottom: 32px;
+    }
+
+    &__info {
+        display: block;
+        margin-top: 20px;
+    }
+
+    section {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__buttons {
+        display: flex;
+        gap: 20px;
+    }
+}

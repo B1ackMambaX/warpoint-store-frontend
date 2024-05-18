@@ -1,0 +1,36 @@
+.email-form {
+    padding: 160px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    &__input {
+        position: relative;
+        padding-bottom: 5px;
+        background-color: #1B1B1B;
+        border: none;
+        border-bottom: 2px solid #FBFBFB;
+        color: #FBFBFB;
+        height: 30px;
+
+        font-size: 24px;
+        display: block;
+        width: 100%;
+
+        &_margin {
+            margin-top: 40px;
+            margin-bottom: 32px;
+        }
+    }
+
+    &__submit {
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__policy {
+        max-width: 310px;
+    }
+}
