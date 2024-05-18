@@ -5,7 +5,7 @@ import Review from '../models/Review';
 
 const productSlice = createApi({
     reducerPath: 'productSlice',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://5.42.105.101/product' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://5.42.105.101/api/product' }),
     tagTypes: ['Product', 'Review'],
     endpoints: builder => ({
         getAllProduct: builder.query<Product[], void>({
