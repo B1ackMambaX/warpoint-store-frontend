@@ -1,10 +1,14 @@
 .cart {
+    padding-bottom: 160px;
     &__info {
         padding-top: 88px;
         display: flex;
         gap: 20px;
     }
-    padding-bottom: 160px;
+
+    &__list {
+        width: 910px;
+    }
 
     &__checkout {
         padding: 32px;

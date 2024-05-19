@@ -7,7 +7,7 @@ import Button from '../button/Button';
 import frame from '../../resources/img/frame.svg';
 
 const Cart = () => {
-    const [cart, setCart] = useState<CartModel>([]);
+    const [cart, setCart] = useState<CartModel | null>(null);
 
 
     useEffect(() => {
@@ -17,18 +17,18 @@ const Cart = () => {
     }, [])
 
     useEffect(() => {
-        if (cart.length !== 0) {
+        if (cart) {
             localStorage.setItem('cart', JSON.stringify(cart));
         }
     }, [cart])
 
     const deleteHandler = (id: number) => {
-        setCart(state => state.filter(item => item.product.id !== id));
+        setCart(state => state!.filter(item => item.product.id !== id));
     }
 
     const incrementHandler = (id: number) => {
         setCart(state => {
-            const newState = state.map(item => {
+            const newState = state!.map(item => {
                 if (item.product.id === id) {
                     return {product: item.product, quantity: item.quantity + 1}
                 } else {
@@ -41,7 +41,7 @@ const Cart = () => {
 
     const decrementHandler = (id: number) => {
         setCart(state => {
-            const newState = state.map(item => {
+            const newState = state!.map(item => {
                 if (item.product.id === id) {
                     if (item.quantity !== 1) {
                         return {product: item.product, quantity: item.quantity - 1}
@@ -59,11 +59,11 @@ const Cart = () => {
 
     const getTotalPrice = () => {
         let totalPrice = 0;
-        cart.forEach(item => {
+        cart?.forEach(item => {
             totalPrice += item.product.price * item.quantity;
         });
 
-        return totalPrice;
+        return totalPrice.toFixed(1);
     }
 
     return (
@@ -72,7 +72,7 @@ const Cart = () => {
                 <Heading>КОРЗИНА</Heading>
                 <div className="cart__info">
                     <div className="cart__list">
-                        {cart.length !== 0 && cart.map(item => (<
+                        {cart && cart.map(item => (<
                             CartItem
                                 key={item.product.id}
                                 name={item.product.name}
