@@ -9,8 +9,8 @@ const productSlice = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'http://5.42.105.101/api/product' }),
     tagTypes: ['Product', 'Review'],
     endpoints: builder => ({
-        getAllProduct: builder.query<any, getAllProductParams>({
-            query: ({offset, limit}) => `/?skip=${offset}&limit=${limit}`,
+        getAllProduct: builder.query<Product[], getAllProductParams>({
+            query: ({offset, limit}) => limit ? `/?skip=${offset}&limit=${limit}` : `/?skip=${offset}`,
             providesTags: ['Product']
         }),
 

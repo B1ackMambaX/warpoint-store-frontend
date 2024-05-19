@@ -1,11 +1,13 @@
+import Category from "./Category";
+
 interface Product {
-    id: number,
-    categoryId: number,
-    name: string,
-    description: string,
-    price: number,
-    stock: number,
-    imageUrl: string
+    id: number;
+    category: Category;
+    name: string;
+    description: string;
+    price: number;
+    stock: number;
+    img_url: string;
 }
 
 export default Product;

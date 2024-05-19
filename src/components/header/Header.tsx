@@ -6,11 +6,15 @@ import Button from '../button/Button';
 
 const Header = () => {
 	return <header className="header">
-                <h1 className='header__heading bebas'>WARPOINTstore</h1>
+                <Link to={'/'}>
+                    <h1 className='header__heading bebas'>WARPOINTstore</h1>
+                </Link>
 
-                <nav >
+                <nav>
                     <ul className='header__navigation'>
-                        <Button tag='li' text='Каталог' image={frame} height={48} width={203} fontSize={16}/>
+                        <Link to={'/catalog'}>
+                            <Button tag='li' text='Каталог' image={frame} height={48} width={203} fontSize={16}/>
+                        </Link>
                         <Button tag='li' text='Игра' image={frame} height={48} width={203} fontSize={16}/>
                         <Button tag='li' text='О WARPOINT' image={frame} height={48} width={203} fontSize={16}/>
                     </ul>
