@@ -2,11 +2,16 @@
     display: flex;
     gap: 20px;
     min-height: 670px;
+    padding-bottom: 160px;
 
     &__img {
         width: 670px;
         height: 670px;
         object-fit: cover;
+        border-bottom: 5px solid #3970F6;
+        border-left: 1px solid #3970F6;
+        border-right: 1px solid #3970F6;
+        border-top: 5px solid #3970F6;
     }
 
     &__heading {
