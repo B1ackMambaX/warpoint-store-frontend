@@ -33,7 +33,7 @@ const Profile = () => {
 						) : (
 							<>
 								<img src={profileAvatar} alt="" className="profile__avatar" />
-								<h2 className="profile__name">{user!.fullname}</h2>
+								<h2 className="profile__name">{user?.fullname}</h2>
 							</>
 						)}
 					</article>
@@ -48,9 +48,9 @@ const Profile = () => {
 								<div>Ошибка</div>
 							) : (
 								<>
-									<input type="text" className="profile__user-input" value={user!.fullname} readOnly />
-									<input type="phone" className="profile__user-input" value={user!.phone} readOnly />
-									<input type="email" className="profile__user-input" value={user!.email} readOnly />
+									<input type="text" className="profile__user-input" value={user?.fullname} readOnly />
+									<input type="phone" className="profile__user-input" value={user?.phone} readOnly />
+									<input type="email" className="profile__user-input" value={user?.email} readOnly />
 								</>
 							)}
 						</div>

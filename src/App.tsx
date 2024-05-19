@@ -7,6 +7,7 @@ import Catalog from './pages/catalog/Catalog';
 import ProductPage from './pages/productPage/ProductPage';
 import CartPage from './pages/cart/CartPage';
 import Profile from './pages/profile/Profile';
+import Game from './pages/game/Game';
 
 const App = () => {
 	return (
@@ -19,6 +20,7 @@ const App = () => {
 				<Route path="/product/:productId" element={<ProductPage/>} />
 				<Route path="/cart" element={<CartPage/>} />
 				<Route path="/profile" element={<Profile/>}/>
+				<Route path="/game" element={<Game/>}/>
 			</Routes>
 
 		</Router>

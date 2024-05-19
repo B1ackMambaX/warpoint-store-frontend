@@ -15,7 +15,10 @@ const Header = () => {
                         <Link to={'/catalog'}>
                             <Button tag='li' text='Каталог' image={frame} height={48} width={203} fontSize={16}/>
                         </Link>
-                        <Button tag='li' text='Игра' image={frame} height={48} width={203} fontSize={16}/>
+                        <Link to={'/game'}>
+                            <Button tag='li' text='Игра' image={frame} height={48} width={203} fontSize={16}/>
+                        </Link>
+
                         <Button tag='li' text='О WARPOINT' image={frame} height={48} width={203} fontSize={16}/>
                     </ul>
                 </nav>
