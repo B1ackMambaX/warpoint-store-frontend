@@ -5,6 +5,7 @@ import Select from 'react-select';
 import Heading from '../heading/Heading';
 import './productList.scss';
 import Product from '../../models/Product';
+import { Link } from 'react-router-dom';
 
 const categoriesOptions = [
     { value: '1', label: 'Мерч' },
@@ -33,7 +34,7 @@ const ProductList = () => {
 			return <div>Произошла ошибка, попробуйте позже</div>;
 		} else {
 			return filterAndSortingHandler(products!).map((product) => {
-				return <Card id={product.id} key={product.id} name={product.name} description={product.description} price={product.price} imageUrl={product.img_url} />;
+				return <Link key={product.id} to={`/product/${product.id}`}><Card id={product.id} name={product.name} description={product.description} price={product.price} imageUrl={product.img_url} /></Link>;
 			});
 		}
 	};

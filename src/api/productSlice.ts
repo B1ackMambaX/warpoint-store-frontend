@@ -15,12 +15,11 @@ const productSlice = createApi({
         }),
 
         getProductById: builder.query<Product, number>({
-            query: (id) => `/product/${id}`,
-            providesTags: (_, _2, id) => [{ type: 'Product', id }]
+            query: (id) => `/${id}`,
         }),
 
         getReviewsByProductId: builder.query<Review, number>({
-            query: (productID) => `/product/${productID}/review`,
+            query: (productID) => `/${productID}/review`,
             providesTags: (_, _2, productId) => [{ type: 'Review', id: productId }],
         })
     }) 
