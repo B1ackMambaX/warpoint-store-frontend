@@ -1,6 +1,6 @@
 interface getAllProductParams {
     offset: number;
-    limit: number;
+    limit?: number;
 }
 
 

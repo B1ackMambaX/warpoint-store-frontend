@@ -20,7 +20,7 @@ const CatalogPage = () => {
         } else if (isError) {
             return <div>Произошла ошибка, попробуйте позже</div>
         } else {
-            return products.map((product: any) => {
+            return products!.map((product: any) => {
                 return <Card
                         key={product.id}
                         id={product.id}
